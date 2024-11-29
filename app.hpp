@@ -21,11 +21,10 @@ struct app {
         bot.on_slashcommand([this](const dpp::slashcommand_t& event) -> void {
             std::string_view name = event.command.get_command_name();
 
-            if (this->callbacks.contains(name)) {
+            if (this->callbacks.contains(name))
                 this->callbacks[name](event);
-            } else {
-                std::println("Command {} requested but not configured.", name);
-            }
+            else
+                std::println("Command {} requested in guild {} but not configured.", name, event.command.get_guild().name);
         });
 
         bot.on_ready([this](const dpp::ready_t&) -> void {
@@ -33,7 +32,7 @@ struct app {
                 for (auto guild_id: this->guilds) {
                     std::println("Adding {} commands to guild {}...", this->configs.size(), guild_id);
 
-                    /*this->bot.guild_bulk_command_delete(guild_id);*/
+                    // this->bot.guild_bulk_command_delete(guild_id);
                     this->bot.guild_bulk_command_create(this->configs, guild_id);
                 }
             }
@@ -42,8 +41,7 @@ struct app {
         });
     }
 
-    auto add_command(std::string_view name, std::string_view description,
-                     std::function<void(const dpp::slashcommand_t&)> callback) -> dpp::slashcommand& {
+    auto add_command(std::string_view name, std::string_view description, std::function<void(const dpp::slashcommand_t&)> callback) -> dpp::slashcommand& {
         callbacks[name] = callback;
         return configs.emplace_back(std::string{name}, std::string{description}, bot.me.id);
     }
