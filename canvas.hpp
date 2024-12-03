@@ -52,8 +52,8 @@ struct Canvas {
         olivec_triangle(oc, a.x, a.y, b.x, b.y, c.x, c.y, color);
     }
 
-    auto draw_text(std::string text, Point pos, std::uint32_t color) -> void {
-        olivec_text(oc, text.c_str(), pos.x, pos.y, olivec_default_font, text_size, color);
+    auto draw_text(const char *text, Point pos, std::uint32_t color) -> void {
+        olivec_text(oc, text, pos.x, pos.y, olivec_default_font, text_size, color);
     }
 
     auto draw_rect(Point pos, Point size, std::uint32_t color) -> void {
