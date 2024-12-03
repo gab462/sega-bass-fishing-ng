@@ -20,6 +20,6 @@ set -xe
 
 c++ -std=c++23 -Wall -Wextra -O2 \
     -I ./external/DPP/build/install/include/ -I ./external \
-    main.cpp -o main \
+    src/main.cpp -o main \
     -L . -l:libolive.a -l:libmsf_gif.a -L ./external/DPP/build/install/lib/ -ldpp \
     -Wl,-rpath ./external/DPP/build/install/lib/
