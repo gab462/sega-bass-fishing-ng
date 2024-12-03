@@ -1,6 +1,6 @@
 #include <string_view>
 #include <cstdlib>
-#include "msf_gif.h"
+#include <msf_gif.h>
 
 struct Gif {
     MsfGifState state;

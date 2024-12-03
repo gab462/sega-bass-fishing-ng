@@ -1,6 +1,6 @@
 #include <cstdlib>
 #define OLIVECDEF
-#include "olive.c"
+#include <olive.c>
 
 struct Point {
     float x, y;
