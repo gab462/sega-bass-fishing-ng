@@ -1,5 +1,5 @@
-#ifndef INCLUDE_APP_H
-#define INCLUDE_APP_H
+#ifndef INCLUDE_APP_HPP
+#define INCLUDE_APP_HPP
 
 #include <functional>
 #include <map>

@@ -1,3 +1,6 @@
+#ifndef INCLUDE_GIF_HPP
+#define INCLUDE_GIF_HPP
+
 #include <string_view>
 #include <cstdlib>
 #include <msf_gif.h>
@@ -25,3 +28,5 @@ struct Gif {
         msf_gif_free(result);
     }
 };
+
+#endif

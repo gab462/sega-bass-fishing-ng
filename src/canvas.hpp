@@ -1,3 +1,6 @@
+#ifndef INCLUDE_CANVAS_HPP
+#define INCLUDE_CANVAS_HPP
+
 #include <cstdlib>
 #define OLIVECDEF
 #include <olive.c>
@@ -60,3 +63,5 @@ struct Canvas {
         olivec_rect(oc, pos.x, pos.y, size.x, size.y, color);
     }
 };
+
+#endif
