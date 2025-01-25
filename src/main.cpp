@@ -17,8 +17,8 @@ auto main() -> int {
     app bot{token, std::move(guilds)};
 
     ping_command(bot);
-    blep_command(bot);
     wheel_command(bot);
+    character_command(bot);
 
     bot.run();
 

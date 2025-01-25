@@ -1,12 +1,10 @@
+CFLAGS := -std=c++23 -Wall -Wextra -O2 -I ./external/json/single_include/ -I ./external/cpp-httplib/ -I ./external/DPP/build/install/include/ -I ./external
+LDFLAGS := -L . -l:libolive.a -l:libmsf_gif.a -L ./external/DPP/build/install/lib/ -ldpp -Wl,-rpath ./external/DPP/build/install/lib/ `pkg-config --libs openssl`
 LIBS := ./external/DPP/build/install/lib/libdpp.so ./libolive.a ./libmsf_gif.a
 SRC := src/main.cpp $(wildcard src/commands/*.cpp)
 
-main: $(LIBS) $(SRC)
-	c++ -std=c++23 -Wall -Wextra -O2 \
-		-I ./external/DPP/build/install/include/ -I ./external \
-		$(SRC) -o main \
-		-L . -l:libolive.a -l:libmsf_gif.a -L ./external/DPP/build/install/lib/ -ldpp \
-		-Wl,-rpath ./external/DPP/build/install/lib/
+main: $(LIBS) $(SRC) $(wildcard src/*.hpp)
+	c++  $(CFLAGS) $(SRC) -o main $(LDFLAGS)
 
 ./external/DPP/build/install/lib/libdpp.so:
 	cmake -S ./external/DPP/ -B ./external/DPP/build -DCMAKE_INSTALL_PREFIX=./external/DPP/build/install
