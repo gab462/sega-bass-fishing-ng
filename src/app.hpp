@@ -19,7 +19,7 @@ struct app {
         bot.on_log(dpp::utility::cout_logger());
 
         bot.on_slashcommand([this](const dpp::slashcommand_t& event) -> void {
-            std::string_view name = event.command.get_command_name();
+            std::string name = event.command.get_command_name();
 
             if (this->callbacks.contains(name))
                 this->callbacks[name](event);
